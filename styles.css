@@ -1,0 +1,26 @@
+body{
+    background-image: url("taple.jpg");
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    background-size: cover;
+    width: 100%;
+    object-fit: contain;
+    font-size: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+h1{
+    color: goldenrod;
+}
+h3{
+    font-style: italic;
+}
+button{
+    border: none;
+    background: goldenrod;
+    color: #016f32;
+    width: 200px;
+    padding: 8px 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
