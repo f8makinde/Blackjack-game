@@ -1,6 +1,7 @@
 let firstCard = 11;
 let secondCard = 10;
-let sum = firstCard + secondCard;
+let allCards = []
+let sum = 0;
 let hasBlackJack = false;
 let isAlive = true;
 let message = "";
@@ -8,7 +9,15 @@ let roundEl = document.querySelector("#round");
 let sumEl = document.querySelector("#sum");
 let cardsEl = document.getElementById("card");
 
+function getRandomNumber(){
+    let randomNum = Math.floor(Math.random() * 13) + 1;
+    return randomNum
+}
 function start(){
+    let firstCard = getRandomNumber();
+    let secondCard = getRandomNumber();
+    allCards = [firstCard, secondCard];
+    sum = firstCard + secondCard;
     renderGame();
 }
 function renderGame(){
@@ -25,10 +34,14 @@ function renderGame(){
         }
         roundEl.textContent = message;
         sumEl.innerHTML = `Sum: ${sum}`;
-        cardsEl.innerHTML = `Card: ${firstCard} ${secondCard}`;
+        cardsEl.textContent = `Card: `
+        for(let i = 0; i < allCards.length; i++){
+            cardsEl.textContent += `${allCards[i]} `;
+        }
 }
 function newCard(){
     let card = 2;
     sum += card;
+    allCards.push(card);
     renderGame();
 }
