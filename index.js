@@ -1,5 +1,4 @@
-let firstCard = 11;
-let secondCard = 10;
+
 let allCards = []
 let sum = 0;
 let hasBlackJack = false;
