@@ -1,18 +1,23 @@
-
+let players = {
+    name: "Faith",
+    money: 200
+}
 let allCards = []
 let sum = 0;
 let hasBlackJack = false;
-let isAlive = true;
+let isAlive = false;
 let message = "";
 let roundEl = document.querySelector("#round");
 let sumEl = document.querySelector("#sum");
 let cardsEl = document.getElementById("card");
+let playerEl = document.getElementById("player-el");
 
 function getRandomNumber(){
     let randomNum = Math.floor(Math.random() * 13) + 1;
     return randomNum
 }
 function start(){
+    isAlive = true;
     let firstCard = getRandomNumber();
     let secondCard = getRandomNumber();
     allCards = [firstCard, secondCard];
@@ -37,10 +42,21 @@ function renderGame(){
         for(let i = 0; i < allCards.length; i++){
             cardsEl.textContent += `${allCards[i]} `;
         }
+        playerEl.textContent = `${players.name}: $${players.money}`
+    
 }
 function newCard(){
-    let card = 2;
-    sum += card;
-    allCards.push(card);
-    renderGame();
+    if(isAlive === true && hasBlackJack === false){
+        let card = getRandomNumber();
+        sum += card;
+        allCards.push(card);
+        renderGame();
+    }
 }
+
+function reset(){
+    sumEl.innerHTML = ""
+    cardsEl.textContent = ""
+}
+
+
