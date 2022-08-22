@@ -1,6 +1,6 @@
 let players = {
-    name: "Faith",
-    money: 200
+    name: "Player",
+    money: 100
 }
 let allCards = []
 let sum = 0;
@@ -22,26 +22,29 @@ function start(){
     let secondCard = getRandomNumber();
     allCards = [firstCard, secondCard];
     sum = firstCard + secondCard;
+    players.money = 100;
     renderGame();
 }
 function renderGame(){
+    sumEl.innerHTML = `Sum: ${sum}`;
+    cardsEl.textContent = `Card: `
+    for(let i = 0; i < allCards.length; i++){
+        cardsEl.textContent += `${allCards[i]} `;
+    }
     if(sum < 21){
         message = `Do you want to draw a new card`;
         }
         else if(sum === 21){
             message = `Wooah you have won blackjack`;
             hasBlackJack = true;
+            players.money = 200;
         }
         else{
             message = `Sorry you have lost the game`;
             isAlive = false;
+            players.money = 0;
         }
         roundEl.textContent = message;
-        sumEl.innerHTML = `Sum: ${sum}`;
-        cardsEl.textContent = `Card: `
-        for(let i = 0; i < allCards.length; i++){
-            cardsEl.textContent += `${allCards[i]} `;
-        }
         playerEl.textContent = `${players.name}: $${players.money}`
     
 }
@@ -57,6 +60,9 @@ function newCard(){
 function reset(){
     sumEl.innerHTML = ""
     cardsEl.textContent = ""
+    roundEl.innerHTML = "";
+    playerEl.innerHTML = "";
+    players.money = 100;
 }
 
 
